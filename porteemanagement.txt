@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Portee Management | Airbnb Co-Hosting & Property Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta
+name="description"
+content="Portee Management offers stress-free Airbnb co-hosting and short-term rental property management. You keep ownership, we handle guests, cleaners, pricing, and operations."
+/>
+<style>
+:root {
+--bg: #050509;
+--bg-alt: #0c0c14;
+--accent: #f5c76b;
+--accent-soft: rgba(245, 199, 107, 0.08);
+--text-main: #f9fafb;
+--text-muted: #9ca3af;
+--border-subtle: #1f2933;
+--card-bg: #111827;
+--danger: #ef4444;
+--radius-xl: 1.5rem;
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+sans-serif;
+background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+color: var(--text-main);
+line-height: 1.6;
+}
+
+a {
+color: inherit;
+text-decoration: none;
+}
+
+.page {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+header {
+position: sticky;
+top: 0;
+z-index: 20;
+backdrop-filter: blur(16px);
+background: linear-gradient(
+to bottom,
+rgba(2, 6, 23, 0.96),
+rgba(2, 6, 23, 0.85),
+rgba(2, 6, 23, 0.0)
+);
+border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+}
+
+.nav-inner {
+max-width: 1120px;
+margin: 0 auto;
+padding: 0.9rem 1.25rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 1.5rem;
+}
+
+.logo-wrap {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+}
+
+.logo-circle {
+width: 40px;
+height: 40px;
+border-radius: 999px;
+border: 1px solid rgba(245, 199, 107, 0.6);
+display: flex;
+align-items: center;
+justify-content: center;
+background: radial-gradient(circle at top, #f5c76b, #b77a22);
+color: #111827;
+font-weight: 800;
+font-size: 0.9rem;
+letter-spacing: 0.06em;
+}
+
+.logo-text {
+display: flex;
+flex-direction: column;
+gap: 0.1rem;
+}
+
+.logo-main {
+font-weight: 700;
+font-size: 1rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+}
+
+.logo-sub {
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+
+.nav-links {
+display: flex;
+align-items: center;
+gap: 1.5rem;
+font-size: 0.9rem;
+}
+
+.nav-links a {
+color: var(--text-muted);
+transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.nav-links a:hover {
+color: var(--accent);
+transform: translateY(-1px);
+}
+
+.nav-cta {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+}
+
+.btn {
+border-radius: 999px;
+padding: 0.55rem 1.1rem;
+font-size: 0.9rem;
+border: 1px solid transparent;
+cursor: pointer;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 0.35rem;
+transition: all 0.18s ease;
+white-space: nowrap;
+}
+
+.btn-outline {
+border-color: rgba(156, 163, 175, 0.7);
+color: var(--text-main);
+background: rgba(15, 23, 42, 0.8);
+}
+
+.btn-outline:hover {
+border-color: var(--accent);
+color: var(--accent);
+transform: translateY(-1px);
+}
+
+.btn-accent {
+background: linear-gradient(135deg, #f5c76b, #f8b23b);
+color: #111827;
+font-weight: 600;
+box-shadow: 0 12px 30px rgba(248, 180, 63, 0.25);
+}
+
+.btn-accent:hover {
+filter: brightness(1.03);
+transform: translateY(-1px);
+box-shadow: 0 18px 38px rgba(248, 180, 63, 0.35);
+}
+
+main {
+flex: 1;
+}
+
+.section {
+max-width: 1120px;
+margin: 0 auto;
+padding: 2.75rem 1.25rem;
+}
+
+.hero {
+padding-top: 3rem;
+padding-bottom: 1.5rem;
+display: grid;
+grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+gap: 2.5rem;
+align-items: center;
+}
+
+.badge {
+display: inline-flex;
+align-items: center;
+gap: 0.4rem;
+padding: 0.2rem 0.6rem;
+border-radius: 999px;
+font-size: 0.75rem;
+border: 1px solid rgba(148, 163, 184, 0.7);
+background: radial-gradient(circle at top, #111827, #020617);
+color: var(--text-muted);
+margin-bottom: 0.7rem;
+}
+
+.badge-dot {
+width: 8px;
+height: 8px;
+border-radius: 999px;
+background: var(--accent);
+box-shadow: 0 0 12px rgba(245, 199, 107, 0.9);
+}
+
+.hero-kicker {
+font-size: 0.8rem;
+text-transform: uppercase;
+letter-spacing: 0.18em;
+color: var(--accent);
+margin-bottom: 0.5rem;
+}
+
+.hero-title {
+font-size: clamp(1.9rem, 3.1vw + 0.8rem, 2.8rem);
+line-height: 1.08;
+font-weight: 800;
+margin-bottom: 0.75rem;
+}
+
+.hero-sub {
+font-size: 0.98rem;
+color: var(--text-muted);
+max-width: 34rem;
+margin-bottom: 1.35rem;
+}
+
+.hero-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 0.75rem;
+margin-bottom: 1.35rem;
+}
+
+.hero-micro {
+display: flex;
+flex-wrap: wrap;
+gap: 1.5rem;
+font-size: 0.85rem;
+color: var(--text-muted);
+}
+
+.micro-item span {
+display: block;
+}
+
+.micro-label {
+color: var(--text-muted);
+}
+
+.micro-value {
+font-weight: 600;
+color: var(--accent);
+font-size: 0.95rem;
+}
+
+.hero-card {
+background: radial-gradient(circle at top left, #1e293b, #020617);
+border-radius: var(--radius-xl);
+padding: 1.6rem 1.4rem;
+border: 1px solid rgba(148, 163, 184, 0.35);
+box-shadow: 0 18px 45px rgba(15, 23, 42, 0.85);
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+
+.hero-card-title {
+font-size: 0.95rem;
+font-weight: 600;
+margin-bottom: 0.25rem;
+}
+
+.hero-card-sub {
+font-size: 0.85rem;
+color: var(--text-muted);
+margin-bottom: 0.25rem;
+}
+
+.grid-2 {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 1.4rem;
+}
+
+.pill-label {
+display: inline-flex;
+align-items: center;
+gap: 0.4rem;
+font-size: 0.8rem;
+color: var(--text-muted);
+margin-bottom: 0.4rem;
+}
+
+.pill-label-dot {
+width: 6px;
+height: 6px;
+border-radius: 999px;
+background: #22c55e;
+}
+
+.metric-row {
+display: flex;
+justify-content: space-between;
+align-items: baseline;
+font-size: 0.78rem;
+color: var(--text-muted);
+margin-top: 0.15rem;
+}
+
+.metric-value {
+font-size: 0.9rem;
+font-weight: 600;
+color: var(--accent);
+}
+
+.section-header {
+margin-bottom: 1.5rem;
+}
+
+.section-eyebrow {
+font-size: 0.75rem;
+text-transform: uppercase;
+letter-spacing: 0.2em;
+color: var(--accent);
+margin-bottom: 0.3rem;
+}
+
+.section-title {
+font-size: 1.4rem;
+font-weight: 700;
+margin-bottom: 0.2rem;
+}
+
+.section-sub {
+font-size: 0.9rem;
+color: var(--text-muted);
+max-width: 32rem;
+}
+
+.card {
+background: rgba(15, 23, 42, 0.95);
+border-radius: 1.25rem;
+padding: 1.25rem 1.2rem;
+border: 1px solid rgba(31, 41, 55, 0.85);
+box-shadow: 0 16px 35px rgba(15, 23, 42, 0.75);
+}
+
+.card h3 {
+font-size: 1rem;
+margin-bottom: 0.35rem;
+}
+
+.card .badge-soft {
+display: inline-flex;
+align-items: center;
+padding: 0.12rem 0.45rem;
+border-radius: 999px;
+background: var(--accent-soft);
+border: 1px solid rgba(245, 199, 107, 0.35);
+color: var(--accent);
+font-size: 0.7rem;
+margin-bottom: 0.35rem;
+}
+
+.card p {
+font-size: 0.85rem;
+color: var(--text-muted);
+margin-bottom: 0.45rem;
+}
+
+.card ul {
+list-style: none;
+margin-top: 0.35rem;
+font-size: 0.82rem;
+color: var(--text-muted);
+}
+
+.card ul li {
+display: flex;
+gap: 0.4rem;
+margin-bottom: 0.25rem;
+}
+
+.bullet {
+width: 5px;
+height: 5px;
+border-radius: 999px;
+background: rgba(148, 163, 184, 0.8);
+margin-top: 0.35rem;
+flex-shrink: 0;
+}
+
+.pill {
+display: inline-flex;
+align-items: center;
+gap: 0.35rem;
+font-size: 0.76rem;
+padding: 0.18rem 0.55rem;
+border-radius: 999px;
+background: rgba(15, 23, 42, 0.9);
+border: 1px solid rgba(148, 163, 184, 0.5);
+color: var(--text-muted);
+}
+
+.pill strong {
+color: var(--accent);
+}
+
+.steps {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 1.1rem;
+}
+
+.step {
+padding: 1.1rem 1rem;
+border-radius: 1rem;
+background: rgba(15, 23, 42, 0.95);
+border: 1px solid rgba(31, 41, 55, 0.9);
+}
+
+.step-label {
+font-size: 0.72rem;
+text-transform: uppercase;
+letter-spacing: 0.16em;
+color: var(--accent);
+margin-bottom: 0.25rem;
+}
+
+.step-title {
+font-size: 0.95rem;
+font-weight: 600;
+margin-bottom: 0.15rem;
+}
+
+.step p {
+font-size: 0.83rem;
+color: var(--text-muted);
+}
+
+.pricing-example {
+margin-top: 0.75rem;
+font-size: 0.85rem;
+color: var(--text-muted);
+}
+
+.about-grid {
+display: grid;
+grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+gap: 1.5rem;
+}
+
+.about-callout {
+font-size: 0.85rem;
+color: var(--text-muted);
+padding: 1rem;
+border-radius: 1.1rem;
+border: 1px dashed rgba(148, 163, 184, 0.7);
+background: rgba(15, 23, 42, 0.75);
+}
+
+.testimonials {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+gap: 1.2rem;
+}
+
+.testimonial-card {
+padding: 1rem 0.9rem;
+border-radius: 1rem;
+background: rgba(15, 23, 42, 0.95);
+border: 1px dashed rgba(55, 65, 81, 0.9);
+font-size: 0.82rem;
+color: var(--text-muted);
+}
+
+.testimonial-placeholder {
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+
+.contact-grid {
+display: grid;
+grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+gap: 1.6rem;
+align-items: flex-start;
+}
+
+form {
+display: grid;
+gap: 0.75rem;
+}
+
+label {
+font-size: 0.83rem;
+color: var(--text-muted);
+margin-bottom: 0.08rem;
+display: block;
+}
+
+input,
+textarea {
+width: 100%;
+padding: 0.6rem 0.7rem;
+border-radius: 0.75rem;
+border: 1px solid rgba(55, 65, 81, 0.9);
+background: rgba(15, 23, 42, 0.85);
+color: var(--text-main);
+font-size: 0.85rem;
+outline: none;
+transition: border-color 0.18s ease, box-shadow 0.18s ease,
+background 0.18s ease;
+}
+
+input:focus,
+textarea:focus {
+border-color: var(--accent);
+box-shadow: 0 0 0 1px rgba(245, 199, 107, 0.35);
+background: rgba(15, 23, 42, 0.95);
+}
+
+textarea {
+min-height: 120px;
+resize: vertical;
+}
+
+.field-row {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+gap: 0.75rem;
+}
+
+.contact-meta {
+font-size: 0.85rem;
+color: var(--text-muted);
+display: flex;
+flex-direction: column;
+gap: 0.35rem;
+}
+
+.contact-meta p span {
+color: var(--accent);
+font-weight: 500;
+}
+
+.contact-meta a {
+color: var(--accent);
+text-decoration: underline;
+text-decoration-thickness: 1px;
+text-underline-offset: 3px;
+}
+
+footer {
+border-top: 1px solid rgba(31, 41, 55, 0.9);
+padding: 1.1rem 1.25rem 1.6rem;
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+
+.footer-inner {
+max-width: 1120px;
+margin: 0 auto;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+gap: 0.75rem;
+align-items: center;
+}
+
+@media (max-width: 900px) {
+.hero {
+grid-template-columns: minmax(0, 1fr);
+}
+
+.hero-card {
+order: -1;
+}
+
+.about-grid,
+.contact-grid {
+grid-template-columns: minmax(0, 1fr);
+}
+
+.nav-links {
+display: none;
+}
+
+.nav-inner {
+padding-inline: 1rem;
+}
+}
+
+@media (max-width: 640px) {
+.section {
+padding-inline: 1rem;
+}
+
+.hero {
+padding-top: 2.1rem;
+}
+
+.hero-actions {
+flex-direction: column;
+align-items: stretch;
+}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+<div class="nav-inner">
+<a href="#top" class="logo-wrap">
+<div class="logo-circle">PM</div>
+<div class="logo-text">
+<div class="logo-main">PORTEE MANAGEMENT</div>
+<div class="logo-sub">Airbnb Co-Hosting & STR Management</div>
+</div>
+</a>
+
+<nav class="nav-links">
+<a href="#services">Services</a>
+<a href="#why-us">Why Us</a>
+<a href="#how-it-works">How It Works</a>
+<a href="#pricing">Pricing</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="nav-cta">
+<a
+class="btn btn-outline"
+href="#contact"
+>
+Contact
+</a>
+<a
+class="btn btn-accent"
+href="mailto:info@porteemanagement.dev?subject=Free%20Listing%20Audit%20Request"
+>
+Free Listing Audit
+</a>
+</div>
+</div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="section hero">
+<div>
+<div class="badge">
+<span class="badge-dot"></span>
+Airbnb Co-Hosting · Short-Term Rental Management
+</div>
+<div class="hero-kicker">Stress-Free Hosting</div>
+<h1 class="hero-title">
+Stress-Free Airbnb Co-Hosting & Property Management
+</h1>
+<p class="hero-sub">
+You keep ownership. I handle the guests, cleaners, pricing, and day-to-day operations so
+your property earns more without adding more to your plate.
+</p>
+
+<div class="hero-actions">
+<a
+class="btn btn-accent"
+href="mailto:info@porteemanagement.dev?subject=Free%20Listing%20Audit%20Request"
+>
+Schedule a Free Listing Audit
+</a>
+<a class="btn btn-outline" href="#services">
+See Services
+</a>
+</div>
+
+<div class="hero-micro">
+<div class="micro-item">
+<span class="micro-label">Guest Response Goal</span>
+<span class="micro-value">&lt; 5 minutes</span>
+</div>
+<div class="micro-item">
+<span class="micro-label">Service Range</span>
+<span class="micro-value">10–25% of revenue</span>
+</div>
+<div class="micro-item">
+<span class="micro-label">Owner Focus</span>
+<span class="micro-value">Hands-off hosting</span>
+</div>
+</div>
+</div>
+
+<aside class="hero-card">
+<div>
+<div class="hero-card-title">What Portee Management Does</div>
+<div class="hero-card-sub">
+Full guest experience management so you don’t have to be “on call” for your Airbnb.
+</div>
+<ul>
+<li>Guest communication before, during, and after each stay</li>
+<li>Cleaner coordination and turnover scheduling</li>
+<li>Dynamic pricing to increase occupancy and revenue</li>
+<li>Issue handling, guest support, and review management (on higher tiers)</li>
+</ul>
+</div>
+<div class="grid-2">
+<div>
+<div class="pill-label">
+<span class="pill-label-dot"></span> Response Performance
+</div>
+<div class="metric-row">
+<span>Average guest response time</span>
+<span class="metric-value">&lt; 5 minutes</span>
+</div>
+</div>
+<div>
+<div class="pill-label">
+<span class="pill-label-dot" style="background:#3b82f6;"></span> Owner Focus
+</div>
+<div class="metric-row">
+<span>Hosting style</span>
+<span class="metric-value">Hands-off & profitable</span>
+</div>
+</div>
+</div>
+</aside>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+<div class="section-header">
+<div class="section-eyebrow">Our Services</div>
+<h2 class="section-title">Choose the level of support that fits your property.</h2>
+<p class="section-sub">
+From simple co-hosting support to full-service management, you stay in control of your
+property while I handle the work.
+</p>
+</div>
+
+<div class="grid-2">
+<article class="card">
+<div class="badge-soft">Basic Co-Hosting · 10%</div>
+<h3>Basic Co-Hosting – 10% of booking revenue</h3>
+<p>
+Perfect if you want to stay involved but no longer want to be glued to your phone or
+inbox.
+</p>
+<ul>
+<li>
+<span class="bullet"></span>
+<span>5-minute average guest response time</span>
+</li>
+<li>
+<span class="bullet"></span>
+<span>Calendar & reservation management</span>
+</li>
+<li>
+<span class="bullet"></span>
+<span>Guest communication before, during, & after each stay</span>
+</li>
+</ul>
+</article>
+
+<article class="card">
+<div class="badge-soft">Standard Co-Hosting · 15%</div>
+<h3>Standard Co-Hosting – 15% of booking revenue</h3>
+<p>
+For owners who want a more hands-off approach with stronger revenue tools and cleaner
+coordination.
+</p>
+<ul>
+<li>
+<span class="bullet"></span>
+<span>Everything in Basic Co-Hosting</span>
+</li>
+<li>
+<span class="bullet"></span>
+<span>Cleaning coordination & turnover scheduling</span>
+</li>
+<li>
+<span class="bullet"></span>
+<span>Smart pricing optimization (PriceLabs / Wheelhouse)</span>
+</li>
+<li>
+<span class="bullet"></span>
+<span>Restock reminders for supplies and essentials</span>
+</li>
+</ul>
+</article>
+
+<article class="card">
+<div class="badge-soft">Full Service · 20–25%</div>
+<h3>Full Service Management – 20–25% of booking revenue</h3>
+<p>
+Ideal if you want to treat your property like a true passive investment while keeping
+ownership and control.
+</p>
+<ul>
+<li>
+<span class="bullet"></span>
+<span>Everything in Standard Co-Hosting</span>
+</li>
+<li>
+<span class="bullet"></span>
+<span>Review management across every stay</span>
+</li>
+<li>
+<span class="bullet"></span>
+<span>Weekly & monthly performance reports</span>
+</li>
+<li>
+<span class="bullet"></span>
+<span>Supply tracking and issue resolution</span>
+</li>
+</ul>
+</article>
+
+<article class="card">
+<h3>Cleaning Fee Policy</h3>
+<p>
+The cleaning fee is paid by the guest — not by the host or co-host. This keeps your
+earnings focused on revenue, not turnover costs.
+</p>
+<div class="pill">
+<strong>Note:</strong> Cleaning fee is separate from management fees.
+</div>
+</article>
+</div>
+</section>
+
+<!-- WHY US -->
+<section id="why-us" class="section">
+<div class="section-header">
+<div class="section-eyebrow">Why Choose Portee Management?</div>
+<h2 class="section-title">A better way to host.</h2>
+<p class="section-sub">
+Built for busy owners who want higher income without turning hosting into a second job.
+</p>
+</div>
+
+<div class="grid-2">
+<article class="card">
+<h3>Fast Response Time</h3>
+<p>
+Guests expect quick replies — and platforms reward hosts who respond fast. A
+sub-5-minute response goal helps drive more 5-star reviews and repeat bookings.
+</p>
+</article>
+
+<article class="card">
+<h3>Proven Pricing Strategies</h3>
+<p>
+Smart pricing based on demand, seasonality, and local events helps increase occupancy
+and revenue instead of leaving money on the table with flat nightly rates.
+</p>
+</article>
+
+<article class="card">
+<h3>Professional Cleaning Coordination</h3>
+<p>
+Reliable cleaners scheduled around every stay, with clear checklists and standards so
+your property always feels guest-ready.
+</p>
+</article>
+
+<article class="card">
+<h3>Built for Busy Owners</h3>
+<p>
+Whether you live locally or out of state, Portee Management is designed to keep hosting
+hands-off so you can focus on your life, work, or other investments.
+</p>
+</article>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="section">
+<div class="section-header">
+<div class="section-eyebrow">How It Works</div>
+<h2 class="section-title">Simple, transparent, and owner-focused.</h2>
+</div>
+
+<div class="steps">
+<div class="step">
+<div class="step-label">Step 1</div>
+<div class="step-title">Free Listing Audit</div>
+<p>
+I review your photos, pricing, amenities, and listing description to identify what’s
+working and where we can improve performance.
+</p>
+</div>
+<div class="step">
+<div class="step-label">Step 2</div>
+<div class="step-title">Setup & Optimization</div>
+<p>
+I optimize your listing, connect pricing tools, refine your settings, and coordinate
+cleaning and turnover systems.
+</p>
+</div>
+<div class="step">
+<div class="step-label">Step 3</div>
+<div class="step-title">Hands-Off Hosting</div>
+<p>
+You earn passive income while I manage the daily operations — guest messages, issues,
+reviews, and performance.
+</p>
+</div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="section">
+<div class="section-header">
+<div class="section-eyebrow">Pricing</div>
+<h2 class="section-title">Aligned with your success.</h2>
+<p class="section-sub">
+No upfront cost on co-hosting plans — I only earn when you earn. Your success is the
+priority.
+</p>
+</div>
+
+<div class="grid-2">
+<article class="card">
+<h3>Co-Hosting Plans</h3>
+<ul>
+<li>
+<span class="bullet"></span>
+<span><strong>Basic Plan:</strong> 10% of booking revenue</span>
+</li>
+<li>
+<span class="bullet"></span>
+<span><strong>Standard Plan:</strong> 15% of booking revenue</span>
+</li>
+<li>
+<span class="bullet"></span>
+<span><strong>Full Service Plan:</strong> 20–25% of booking revenue</span>
+</li>
+</ul>
+<p class="pricing-example">
+Example: If a property earns $3,000 in booking revenue in a month and you choose the
+20% plan, Portee Management would earn $600 — you keep the rest, with cleaning fees
+covered by guests separately.
+</p>
+</article>
+
+<article class="card">
+<h3>Owner Outcomes</h3>
+<p>
+The goal is simple: higher returns with lower stress. You keep ownership and control of
+your property, while I focus on maximizing performance and protecting your guest
+experience.
+</p>
+</article>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+<div class="section-header">
+<div class="section-eyebrow">About Portee Management</div>
+<h2 class="section-title">Built to help owners earn more with less stress.</h2>
+</div>
+
+<div class="about-grid">
+<div>
+<p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.75rem;">
+Portee Management was created to help property owners earn more without the constant
+pressure of managing an Airbnb full-time. I specialize in guest communication, dynamic
+pricing, cleaning coordination, and providing seamless 5-star guest experiences.
+</p>
+<p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.75rem;">
+My goal is simple: make your property more profitable while giving you your time back.
+For many owners, the biggest bottleneck isn’t the property itself — it’s the ongoing
+operations, messages, and logistics. Portee Management exists to solve that.
+</p>
+<p style="font-size:0.9rem; color:var(--text-muted);">
+As Portee Management grows, the vision is to manage multiple Airbnbs, support
+out-of-state owners, and eventually build a full team to handle property evaluations,
+operations, and cleaning — all while keeping hosting easy and transparent for you.
+</p>
+</div>
+
+<div class="about-callout">
+<strong>Long-term vision:</strong>
+<br /><br />
+Build a portfolio of well-run, guest-loved Airbnbs that deliver consistent returns while
+protecting each property like it’s my own. That means clear communication, honest
+reporting, and a focus on owner and guest experience — not shortcuts.
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+<div class="section-header">
+<div class="section-eyebrow">Testimonials</div>
+<h2 class="section-title">Social proof coming soon.</h2>
+<p class="section-sub">
+Currently onboarding new clients. As properties go live and results come in, this section
+will feature real feedback from owners.
+</p>
+</div>
+
+<div class="testimonials">
+<div class="testimonial-card">
+<div class="testimonial-placeholder">
+“Reviews coming soon — currently onboarding new clients.”
+</div>
+</div>
+<div class="testimonial-card">
+<div class="testimonial-placeholder">
+Future testimonial from a happy owner will go here.
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+<div class="section-header">
+<div class="section-eyebrow">Contact</div>
+<h2 class="section-title">Let’s turn your property into a top-rated Airbnb.</h2>
+<p class="section-sub">
+Share a few details about your property and I’ll follow up with a free earning estimate
+and next steps.
+</p>
+</div>
+
+<div class="contact-grid">
+<form
+onsubmit="window.location.href='mailto:info@porteemanagement.dev?subject=New%20Owner%20Inquiry'; return false;"
+>
+<div class="field-row">
+<div>
+<label for="name">Name</label>
+<input id="name" name="name" type="text" placeholder="Your name" required />
+</div>
+<div>
+<label for="email">Email</label>
+<input
+id="email"
+name="email"
+type="email"
+placeholder="you@example.com"
+required
+/>
+</div>
+</div>
+<div class="field-row">
+<div>
+<label for="location">Property Location</label>
+<input
+id="location"
+name="location"
+type="text"
+placeholder="City / Neighborhood"
+/>
+</div>
+<div>
+<label for="plan">Interested In</label>
+<input
+id="plan"
+name="plan"
+type="text"
+placeholder="Basic, Standard, or Full Service"
+/>
+</div>
+</div>
+<div>
+<label for="message">Message</label>
+<textarea
+id="message"
+name="message"
+placeholder="Tell me a bit about your property, current setup, and goals."
+></textarea>
+</div>
+<button class="btn btn-accent" type="submit">
+Claim Your Free Listing Audit
+</button>
+</form>
+
+<div class="contact-meta">
+<p>
+<span>Business Email:</span><br />
+<a href="mailto:info@porteemanagement.dev">info@porteemanagement.dev</a>
+</p>
+<p>
+Typical response time: <span>&lt; 24 hours</span><br />
+If you prefer, you can email directly with your property address and I’ll send back a
+rough earning estimate and suggested plan.
+</p>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="footer-inner">
+<span>© <span id="year"></span> Portee Management. All rights reserved.</span>
+<span>Ready to earn more with less work? Let’s talk.</span>
+</div>
+</footer>
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
